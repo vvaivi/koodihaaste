@@ -5,7 +5,7 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 require("express-async-errors");
 
-//Routers
+const vegetablesRouter = require("./controllers/vegetables");
 
 const logger = require("./utils/logger");
 
@@ -24,7 +24,7 @@ app.use(cors());
 app.use(express.static("build"));
 app.use(express.json());
 
-//App.use routerit
+app.use("/api/vegetables", vegetablesRouter);
 
 if (process.env.NODE_ENV === "test") {
   const testingRouter = require("./controllers/testing");
