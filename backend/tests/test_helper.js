@@ -24,6 +24,5 @@ const vegetablesInDb = async () => {
 
 module.exports = {
   initialVeggies,
-  nonExistingId,
   vegetablesInDb,
 };

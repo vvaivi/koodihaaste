@@ -1,14 +1,13 @@
 const mongoose = require("mongoose");
 
 const schema = mongoose.Schema({
-  name: String,
-  energy: Number,
-  carbs: Number,
-  protein: Number,
-  fat: Number,
-  wins: {
-    type: Number,
-    default: 0,
+  player1: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Vegetable",
+  },
+  player2: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Vegetable",
   },
 });
 
@@ -20,4 +19,4 @@ schema.set("toJSON", {
   },
 });
 
-module.exports = mongoose.model("Vegetable", schema);
+module.exports = mongoose.model("Battle", schema);

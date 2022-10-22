@@ -17,4 +17,16 @@ router.get("/:id", async (request, response) => {
   const vegetable = await Vegetable.findById(request.params.id);
   response.json(vegetable);
 });
+
+router.put("/:id", async (request, response) => {
+  const veggie = request.body;
+
+  const updatedVeggie = await Vegetable.findByIdAndUpdate(request.params.id, veggie, {
+    new: true,
+    context: "query",
+  });
+
+  response.json(updatedVeggie);
+});
+
 module.exports = router;
