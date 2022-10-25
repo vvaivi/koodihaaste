@@ -10,10 +10,12 @@ import Battle from "./components/Battle";
 
 import { Navigation, Page, Footer, NavButton, GlobalStyle } from "./components";
 import { initializeVeggies } from "./reducers/vegetables";
-import {get1, get2} from "../reducers/battle"
+import {getPlayer1, getPlayer2} from "./reducers/battle";
+import store from "./store"
 
 const App = () => {
   const dispatch = useDispatch();
+
 
   useEffect(() => {
     dispatch(initializeVeggies());
@@ -22,6 +24,34 @@ const App = () => {
   const padding = {
     padding: 5,
   };
+
+  const footerDisplay = () => {
+    
+    
+   /* const player1Name = store.getState().battle.player1.name
+    const player2 = store.getState().battle.player2
+    if (player1 === null && player2 === null){
+      return (
+        <div>
+          Select your veggies for battle
+        </div>
+      )
+    }
+    if (player1 === null || player2 === null){
+      return (
+        <div>
+          You have selected {player1.name}{player2.name} for battle. Select the opponent!
+        </div>
+      )
+    }
+    if (!(player1 === null || player2 === null)){
+      return (
+        <div>
+          You have selected for battle {player1.name} and {player2.name}
+        </div>
+      )
+    }*/
+  }
 
   return (
     <Page>
@@ -49,12 +79,9 @@ const App = () => {
       <Routes>
         <Route path="/battle" element={<Battle />} />
       </Routes>
-      <Footer>You have selected for battle </Footer>
-      
-      
+      <Footer>Mietitään vielä </Footer>
     </Page>
   );
 };
-// <Footer>You have selected for battle {get1.name} and {get2.name}</Footer>
 
 export default App;

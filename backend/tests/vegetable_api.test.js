@@ -5,6 +5,56 @@ const app = require("../app");
 const helper = require("./test_helper");
 const api = supertest(app);
 const Vegetable = require("../models/vegetable");
+const Battle = require("../models/battle");
+const { init } = require("../models/vegetable");
+
+describe("when there are some battles in database", () => {
+    beforeEach(async () => {
+      await Vegetable.deleteMany({});
+      await Battle.deleteMany({});
+      await Vegetable.insertMany(helper.initialVeggies);
+
+      const response = await api
+      .get("/api/vegetables")
+      .expect(200)
+      .expect("Content-Type", /application\/json/);
+
+      const initialBattles = [
+        {
+            player1: response.body[0].id,
+            player2: response.body[1].id,
+        },
+        {
+          player1: response.body[0].id,
+          player2: response.body[0].id,
+      }
+    ]
+       
+      await api
+      .post("/api/battle")
+        .send(initialBattles)
+        .expect(201)
+        .expect("Content-Type", /application\/json/);
+    });
+
+    test("battles can be added and those are returned as json", async () => {
+        const response = await api
+          .get("/api/battle")
+          .expect(200)
+          .expect("Content-Type", /application\/json/);
+    
+        expect(response.body).toHaveLength(1);
+      });
+    
+    test("those are identified by field id", async () => {
+    const response = await api
+        .get("/api/battle")
+        .expect(200)
+        .expect("Content-Type", /application\/json/);
+
+    expect(response.body[0].id).toBeDefined();
+    });
+});
 
 describe("when there are some veggies in database", () => {
   beforeEach(async () => {

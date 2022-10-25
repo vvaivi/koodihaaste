@@ -1,4 +1,5 @@
 const Vegetable = require("../models/vegetable");
+const Battle = require("../models/battle");
 
 const initialVeggies = [
   {
@@ -22,7 +23,13 @@ const vegetablesInDb = async () => {
   return veggies.map((v) => v.toJSON());
 };
 
+const battlesInDb = async () => {
+    const battles = await Battle.find({});
+    return battles.map((b) => b.toJSON());
+  };
+
 module.exports = {
   initialVeggies,
   vegetablesInDb,
+  battlesInDb,
 };
