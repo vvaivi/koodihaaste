@@ -34,7 +34,7 @@ export const reactToVegetable = (vegetable, what) => {
       dispatch(update(updated));
       dispatch(
         setNotification({
-          message: `'${vegetable.name}' has ${what}`,
+          message: `${vegetable.name} ${what}`,
           type: "info",
         })
       );

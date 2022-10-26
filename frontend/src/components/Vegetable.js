@@ -1,9 +1,10 @@
 import { useDispatch, useSelector } from "react-redux";
+import { useState } from "react";
 import { reactToVegetable } from "../reducers/vegetables";
 import { useParams, useNavigate } from "react-router-dom";
-import { Button } from '.'
-import { setNotification } from '../reducers/notification'
-import {addPlayer1, addPlayer2, removePlayer1} from "../reducers/battle";
+import { Button } from ".";
+import { setNotification } from "../reducers/notification";
+import { addPlayer1, addPlayer2, removePlayer1 } from "../reducers/battle";
 import store from "../store";
 import app from "../App";
 
@@ -12,45 +13,40 @@ const Vegetable = () => {
   const vegetable = useSelector((state) => state.vegetables.find((v) => v.id === id));
   const dispatch = useDispatch();
 
+  const player1 = store.getState().battle.player1;
+  const player2 = store.getState().battle.player2;
+
   if (!vegetable) {
     return null;
   }
 
-  const onWin = async () => {
-    const won = {
-      ...vegetable,
-      wins: (vegetable.wins || 0) + 1,
-    };
-    dispatch(reactToVegetable(won, "won"));
-  };
-
   const handleSubmit = (event) => {
     event.preventDefault();
-    onSelected()
-  }
+    onSelected();
+  };
 
-  const onSelected = async () => { 
-    const player1 = store.getState().battle.player1
-    const player2 = store.getState().battle.player2
-
+  const onSelected = async () => {
     if (player1 == null) {
-      dispatch(addPlayer1(vegetable))
-    }
-    else {
+      dispatch(addPlayer1(vegetable));
+      dispatch(setNotification({ message: `You selected ${vegetable.name} for battle`, type: "info" }));
+    } else {
       if (player2 == null) {
-        dispatch(addPlayer2(vegetable))
-      }
-      else {
-        dispatch(setNotification({message: `You have selected both veggies. Remove one of them.`,
-            type: 'alert' }))
+        dispatch(addPlayer2(vegetable));
+        dispatch(setNotification({ message: `You selected ${vegetable.name} for battle`, type: "info" }));
+      } else {
+        dispatch(setNotification({ message: `You have selected both veggies. Remove one of them.`, type: "alert" }));
       }
     }
-    app.forceUpdate()
-  }
+  };
 
   const onRemove = async () => {
-
-  }
+    if (vegetable.id === player1.id) {
+      dispatch(removePlayer1());
+    } else {
+      dispatch(removePlayer1());
+    }
+    dispatch(setNotification({ message: `You removed ${vegetable.name} from battle`, type: "info" }));
+  };
 
   return (
     <div>

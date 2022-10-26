@@ -7,7 +7,7 @@ const store = configureStore({
   reducer: {
     notification: notificationReducer,
     vegetables: vegetableReducer,
-    battle: battleReducer
+    battle: battleReducer,
   },
 });
 

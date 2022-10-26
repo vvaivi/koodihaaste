@@ -7,15 +7,15 @@ import Vegetables from "./components/Vegetables";
 import Vegetable from "./components/Vegetable";
 import Notification from "./components/Notification";
 import Battle from "./components/Battle";
-
 import { Navigation, Page, Footer, NavButton, GlobalStyle } from "./components";
 import { initializeVeggies } from "./reducers/vegetables";
-import {getPlayer1, getPlayer2} from "./reducers/battle";
-import store from "./store"
+
+//Hae tiedot csvstä
+//Poista battlejen tallettaminen mongoon
+//Paranna visuaalista
 
 const App = () => {
   const dispatch = useDispatch();
-
 
   useEffect(() => {
     dispatch(initializeVeggies());
@@ -24,34 +24,6 @@ const App = () => {
   const padding = {
     padding: 5,
   };
-
-  const footerDisplay = () => {
-    
-    
-   /* const player1Name = store.getState().battle.player1.name
-    const player2 = store.getState().battle.player2
-    if (player1 === null && player2 === null){
-      return (
-        <div>
-          Select your veggies for battle
-        </div>
-      )
-    }
-    if (player1 === null || player2 === null){
-      return (
-        <div>
-          You have selected {player1.name}{player2.name} for battle. Select the opponent!
-        </div>
-      )
-    }
-    if (!(player1 === null || player2 === null)){
-      return (
-        <div>
-          You have selected for battle {player1.name} and {player2.name}
-        </div>
-      )
-    }*/
-  }
 
   return (
     <Page>
@@ -79,7 +51,7 @@ const App = () => {
       <Routes>
         <Route path="/battle" element={<Battle />} />
       </Routes>
-      <Footer>Mietitään vielä </Footer>
+      <Footer>Eat your veggies!</Footer>
     </Page>
   );
 };

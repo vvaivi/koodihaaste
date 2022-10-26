@@ -1,31 +1,31 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getStaticContextFromError } from "@remix-run/router";
 import battleService from "../services/battle";
 import { setNotification } from "./notification";
 
 const slice = createSlice({
   name: "battle",
   initialState: {
-    player1 : null,
-    player2 : null
+    player1: null,
+    player2: null,
   },
-  reducers:{
+  reducers: {
     addPlayer1(state, { payload }) {
-      return { ...state, player1: payload }
+      return { ...state, player1: payload };
     },
     addPlayer2(state, { payload }) {
-      return { ...state, player2: payload }
+      return { ...state, player2: payload };
     },
     removePlayer1(state) {
-      return { ...state, player2: null }
+      return { ...state, player2: null };
     },
     removePlayer2(state) {
-      return { ...state, player2: null }
+      return { ...state, player2: null };
     },
   },
 });
 
-export const  {addNew, addPlayer1, addPlayer2, removePlayer1, removePlayer2}  = slice.actions;
+export const { addNew, addPlayer1, addPlayer2, removePlayer1, removePlayer2, getPlayer1Name, getPlayer2Name } =
+  slice.actions;
 
 export const createBattle = (battle) => {
   return async (dispatch) => {
@@ -50,6 +50,5 @@ export const createBattle = (battle) => {
       });
   };
 };
-
 
 export default slice.reducer;
