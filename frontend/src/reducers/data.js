@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { useDispatch } from "react-redux";
 import Papa from "papaparse";
 
 const config = {
@@ -22,7 +21,8 @@ const slice = createSlice({
 
 export const initializeData = () => {
   return async (dispatch) => {
-    //Data contains also other foods tha vegetables since there wasn't a good vegetable csv available
+    //Data contains also other foods than vegetables since there wasn't a good vegetable csv available
+    //The data.csv file is slightly modified from https://fineli.fi/fineli/fi/ohje/19
     fetch("../data.csv")
       .then((response) => response.text())
       .then((responseText) => {

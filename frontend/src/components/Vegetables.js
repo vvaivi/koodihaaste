@@ -1,5 +1,4 @@
 import { useSelector } from "react-redux";
-
 import { Link } from "react-router-dom";
 
 const Vegetables = () => {
@@ -7,11 +6,15 @@ const Vegetables = () => {
 
   return (
     <div>
+      <p></p>
       <h2>Scoreboard</h2>
-      <div id="scoreboard">
+      <div>
         {vegetables.map((vegetable) => (
           <div key={vegetable.id}>
-            <Link to={`/vegetables/${vegetable.id}`}>{vegetable.name}</Link> {vegetable.wins} voittoa
+            <Link style={{ color: "Chocolate" }} to={`/vegetables/${vegetable.id}`}>
+              {vegetable.name}
+            </Link>{" "}
+            {vegetable.wins} voittoa
           </div>
         ))}
       </div>

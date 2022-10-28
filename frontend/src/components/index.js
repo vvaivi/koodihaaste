@@ -23,6 +23,7 @@ export const Input = styled.input`
 export const Page = styled.div`
   padding: 1em;
   background: papayawhip;
+  text-align: center;
 `;
 
 export const GlobalStyle = createGlobalStyle`
@@ -40,6 +41,7 @@ export const Footer = styled.div`
   background: Chocolate;
   padding: 1em;
   margin-top: 2em;
+  text-align: center;
 `;
 
 export const Info = styled.div`

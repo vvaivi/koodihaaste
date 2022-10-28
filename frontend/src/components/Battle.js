@@ -5,7 +5,6 @@ import { reactToVegetable } from "../reducers/vegetables";
 
 const GamePlay = ({ visible, battle }) => {
   const dispatch = useDispatch();
-
   if (!visible) return null;
 
   if (battle.player1.id === battle.player2.id) {
@@ -20,8 +19,8 @@ const GamePlay = ({ visible, battle }) => {
   const delay1 = battle.player1.carbs + battle.player1.protein + battle.player1.fat;
   const delay2 = battle.player2.carbs + battle.player2.protein + battle.player2.fat;
 
-  let timeElapsed1 = delay1;
-  let timeElapsed2 = delay2;
+  let timeElapsed1 = 0;
+  let timeElapsed2 = 0;
 
   const strike1 = battle.player1.carbs - battle.player1.carbs * (battle.player2.protein / 100);
   const strike2 = battle.player2.carbs - battle.player2.carbs * (battle.player1.protein / 100);
@@ -36,7 +35,7 @@ const GamePlay = ({ visible, battle }) => {
       break;
     }
 
-    health1 - strike1 < 0 ? (health1 = 0) : (health1 = health1 - strike1);
+    health1 - strike2 < 0 ? (health1 = 0) : (health1 = health1 - strike2);
     timeElapsed2 = timeElapsed2 + delay2;
     linesToDisplay.push(`${timeElapsed2.toFixed(2)}: ${battle.player2.name} lyö ja tekee 
     ${strike2.toFixed(2)} vahinkoa. ${battle.player1.name}lle jäi ${health1.toFixed(2)} Health.`);
@@ -63,7 +62,8 @@ const Battle = () => {
   if (battle.player1 === null || battle.player2 === null) {
     return (
       <div>
-        <ul>Select both foods first.</ul>
+        <p></p>
+        <h3>Select both foods first.</h3>
       </div>
     );
   }
@@ -73,10 +73,13 @@ const Battle = () => {
 
   return (
     <div>
+      <p></p>
       <h2>Battle</h2>
+      <p></p>
       <h3>
         {battle.player1.name} vs {battle.player2.name}
       </h3>
+      <p></p>
       <ul>
         Health: {battle.player1.energy.toFixed(2)} vs {battle.player2.energy.toFixed(2)}
       </ul>

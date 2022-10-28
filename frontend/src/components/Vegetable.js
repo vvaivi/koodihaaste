@@ -1,12 +1,9 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useState } from "react";
-import { reactToVegetable } from "../reducers/vegetables";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { Button } from ".";
 import { setNotification } from "../reducers/notification";
 import { addPlayer1, addPlayer2, removePlayer1, removePlayer2 } from "../reducers/battle";
 import store from "../store";
-import app from "../App";
 
 const Vegetable = () => {
   const { id } = useParams();
@@ -50,6 +47,7 @@ const Vegetable = () => {
 
   return (
     <div>
+      <p></p>
       <h2>{vegetable.name}</h2>
       <div>
         <ul>energy {vegetable.energy.toFixed(2)} kcal </ul>

@@ -9,15 +9,14 @@ import Notification from "./components/Notification";
 import Battle from "./components/Battle";
 import Filter from "./components/Filter";
 
-import { Navigation, Page, Footer, NavButton, GlobalStyle } from "./components";
+import { Navigation, Page, Footer, GlobalStyle} from "./components";
 import { initializeVeggies } from "./reducers/vegetables";
 import { initializeData } from "./reducers/data";
 
-//Hae tiedot csvstä
-//Express ja api
-//Poista battlejen tallettaminen mongoon
-//Paranna visuaalista
-//Testaa toimiiko ilman mongotestiuria
+//Express ja api ja laita että ei tartte testiä
+//routet
+//Linttaa turhat importit
+//tsekkaa testit
 
 const App = () => {
   const dispatch = useDispatch();
@@ -29,13 +28,15 @@ const App = () => {
 
   const padding = {
     padding: 5,
+    color: "black"
   };
 
   return (
+    <div className="container">
     <Page>
       <GlobalStyle />
       <Navigation>
-        <Link style={padding} to="/">
+        <Link style={padding}  to="/">
           Scoreboard
         </Link>
         <Link style={padding} to="/filter">
@@ -60,8 +61,9 @@ const App = () => {
       <Routes>
         <Route path="/battle" element={<Battle />} />
       </Routes>
-      <Footer>Don't play with your food!</Footer>
+      <Footer><b>Don't play with your food!</b></Footer>
     </Page>
+    </div>
   );
 };
 

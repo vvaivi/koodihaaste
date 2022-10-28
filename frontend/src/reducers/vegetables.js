@@ -50,7 +50,7 @@ export const createVegetable = (vegetable) => {
         dispatch(addNew(response));
         dispatch(
           setNotification({
-            message: `${vegetable.name} tallennettu`,
+            message: `${vegetable.name} saved`,
             type: "info",
           })
         );
@@ -58,7 +58,7 @@ export const createVegetable = (vegetable) => {
       .catch((error) => {
         dispatch(
           setNotification({
-            message: "selecting a veggie failed: " + error.response.data.error,
+            message: "Saving failed, you may have already saved this food",
             type: "alert",
           })
         );

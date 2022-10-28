@@ -1,18 +1,9 @@
-//import data from "../../../data.csv"
-
 import { useDispatch, useSelector } from "react-redux";
 import { Button } from ".";
-import { useState, useEffect } from "react";
-import store from "../store";
-import { addPlayer1, addPlayer2, removePlayer1, removePlayer2 } from "../reducers/battle";
-import { setNotification } from "../reducers/notification";
+import { useState } from "react";
 import { createVegetable } from "../reducers/vegetables";
-import { useParams, useNavigate } from "react-router-dom";
-
-//Kolmas metodi, jossa tehdään valinta ja näyttää tiedot
 
 const VegetableDisplay = ({ vegetable, setFilter }) => {
-  //Pitää kattoo saako idt lisättyä
   const dispatch = useDispatch();
 
   const handleSubmit = (event) => {
@@ -29,7 +20,7 @@ const VegetableDisplay = ({ vegetable, setFilter }) => {
       protein: vegetable.proteiini,
       fat: vegetable.rasva,
     };
-    //Pitää etsiä onko jo tietokannassa, tarvitaan id
+
     dispatch(createVegetable(newVegetable));
   };
 
@@ -55,7 +46,6 @@ const VegetableList = ({ vegetables, setFilter }) => {
   }
 
   if (vegetables.length > 1) {
-    //Pitää muuttaa
     return (
       <div>
         {vegetables.map(({ nimi }) => (
@@ -79,16 +69,17 @@ const Filter = () => {
   const [filter, setFilter] = useState("");
 
   console.log(vegetables);
-  //Ongelmia välillä
 
   const filtered = vegetables.data.filter((c) => c.nimi.toLowerCase().includes(filter.toLowerCase()));
 
   return (
     <div>
-      <ul>Find foods</ul>
+      <p></p>
+      <h3>Find foods</h3>
       <div>
         <input value={filter} onChange={({ target }) => setFilter(target.value)} />
       </div>
+      <p></p>
       <VegetableList vegetables={filtered} setFilter={setFilter} />
     </div>
   );
