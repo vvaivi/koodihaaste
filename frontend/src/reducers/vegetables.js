@@ -50,7 +50,7 @@ export const createVegetable = (vegetable) => {
         dispatch(addNew(response));
         dispatch(
           setNotification({
-            message: `'${vegetable.name}' selected`,
+            message: `${vegetable.name} tallennettu`,
             type: "info",
           })
         );

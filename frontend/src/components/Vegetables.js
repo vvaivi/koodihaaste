@@ -11,7 +11,7 @@ const Vegetables = () => {
       <div id="scoreboard">
         {vegetables.map((vegetable) => (
           <div key={vegetable.id}>
-            <Link to={`/vegetables/${vegetable.id}`}>{vegetable.name}</Link>
+            <Link to={`/vegetables/${vegetable.id}`}>{vegetable.name}</Link> {vegetable.wins} voittoa
           </div>
         ))}
       </div>

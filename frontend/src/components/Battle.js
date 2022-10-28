@@ -61,7 +61,11 @@ const Battle = () => {
   const [visible, setVisible] = useState(false);
 
   if (battle.player1 === null || battle.player2 === null) {
-    return null;
+    return (
+      <div>
+        <ul>Select both foods first.</ul>
+      </div>
+    );
   }
 
   const delay1 = battle.player1.carbs + battle.player1.protein + battle.player1.fat;
@@ -74,16 +78,16 @@ const Battle = () => {
         {battle.player1.name} vs {battle.player2.name}
       </h3>
       <ul>
-        Health: {battle.player1.energy} vs {battle.player2.energy}
+        Health: {battle.player1.energy.toFixed(2)} vs {battle.player2.energy.toFixed(2)}
       </ul>
       <ul>
-        Attack: {battle.player1.carbs} vs {battle.player2.carbs}
+        Attack: {battle.player1.carbs.toFixed(2)} vs {battle.player2.carbs.toFixed(2)}
       </ul>
       <ul>
-        Defence: {battle.player1.protein} vs {battle.player2.protein}
+        Defence: {battle.player1.protein.toFixed(2)} vs {battle.player2.protein.toFixed(2)}
       </ul>
       <ul>
-        Delay: {delay1} vs {delay2}
+        Delay: {delay1.toFixed(2)} vs {delay2.toFixed(2)}
       </ul>
       <GamePlay visible={visible} battle={battle} />
       <Button onClick={() => setVisible(!visible)}>{visible ? "Close battle" : "Start battle"}</Button>
