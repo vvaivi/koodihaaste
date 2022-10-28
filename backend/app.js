@@ -6,7 +6,6 @@ const mongoose = require("mongoose");
 require("express-async-errors");
 
 const vegetablesRouter = require("./controllers/vegetables");
-const battleRouter = require("./controllers/battle");
 
 const logger = require("./utils/logger");
 
@@ -26,7 +25,6 @@ app.use(express.static("build"));
 app.use(express.json());
 
 app.use("/api/vegetables", vegetablesRouter);
-app.use("/api/battle", battleRouter);
 
 if (process.env.NODE_ENV === "test") {
   const testingRouter = require("./controllers/testing");
