@@ -5,8 +5,6 @@ const app = require("../app");
 const helper = require("./test_helper");
 const api = supertest(app);
 const Vegetable = require("../models/vegetable");
-const Battle = require("../models/battle");
-const { init } = require("../models/vegetable");
 
 describe("when there are some veggies in database", () => {
   beforeEach(async () => {

@@ -13,10 +13,7 @@ import { Navigation, Page, Footer, GlobalStyle} from "./components";
 import { initializeVeggies } from "./reducers/vegetables";
 import { initializeData } from "./reducers/data";
 
-//Express ja api ja laita että ei tartte testiä
-//routet
-//Linttaa turhat importit
-//tsekkaa testit
+//Filter sama sana ei toimi
 
 const App = () => {
   const dispatch = useDispatch();
@@ -51,14 +48,11 @@ const App = () => {
 
       <Routes>
         <Route path="/" element={<Vegetables />} />
-      </Routes>
-      <Routes>
+
         <Route path="/vegetables/:id" element={<Vegetable />} />
-      </Routes>
-      <Routes>
+
         <Route path="/filter" element={<Filter />} />
-      </Routes>
-      <Routes>
+
         <Route path="/battle" element={<Battle />} />
       </Routes>
       <Footer><b>Don't play with your food!</b></Footer>

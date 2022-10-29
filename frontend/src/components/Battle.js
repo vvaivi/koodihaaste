@@ -2,15 +2,17 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Button } from ".";
 import { reactToVegetable } from "../reducers/vegetables";
+import { setNotification } from "../reducers/notification";
 
 const GamePlay = ({ visible, battle }) => {
   const dispatch = useDispatch();
   if (!visible) return null;
-
+  
   if (battle.player1.id === battle.player2.id) {
-    return <div>Tasapeli!</div>;
+    dispatch(setNotification({ message: `Tasapeli!`, type: "info" }))
+    return null;
   }
-
+  
   let linesToDisplay = [];
 
   let health1 = battle.player1.energy;

@@ -31,7 +31,7 @@ const VegetableDisplay = ({ vegetable, setFilter }) => {
       <ul>carbohydrates {Number(vegetable.hiilihydraatti).toFixed(2)} g</ul>
       <ul>fat {Number(vegetable.rasva).toFixed(2)} g</ul>
       <ul>protein {Number(vegetable.proteiini).toFixed(2)} g</ul>
-      <Button onClick={handleSubmit}> Save vegetable </Button>
+      <Button onClick={handleSubmit}> Save food </Button>
     </div>
   );
 };
@@ -57,6 +57,7 @@ const VegetableList = ({ vegetables, setFilter }) => {
       </div>
     );
   }
+  console.log(vegetables[0])
   return (
     <div>
       <VegetableDisplay vegetable={vegetables[0]} setFilter={setFilter} />
@@ -68,9 +69,7 @@ const Filter = () => {
   const vegetables = useSelector((state) => state.data);
   const [filter, setFilter] = useState("");
 
-  console.log(vegetables);
-
-  const filtered = vegetables.data.filter((c) => c.nimi.toLowerCase().includes(filter.toLowerCase()));
+  const filtered = (vegetables.data || []).filter((c) => c.nimi.toLowerCase().includes(filter.toLowerCase()));
 
   return (
     <div>

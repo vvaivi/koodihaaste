@@ -14,7 +14,7 @@ const slice = createSlice({
       return { ...state, player2: payload };
     },
     removePlayer1(state) {
-      return { ...state, player2: null };
+      return { ...state, player1: null };
     },
     removePlayer2(state) {
       return { ...state, player2: null };
@@ -22,7 +22,6 @@ const slice = createSlice({
   },
 });
 
-export const { addNew, addPlayer1, addPlayer2, removePlayer1, removePlayer2, getPlayer1Name, getPlayer2Name } =
-  slice.actions;
+export const { addNew, addPlayer1, addPlayer2, removePlayer1, removePlayer2} = slice.actions;
 
 export default slice.reducer;
