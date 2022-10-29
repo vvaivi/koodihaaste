@@ -15,6 +15,8 @@ const Vegetable = () => {
   }
 
   const onSelected = async () => {
+    //Checking which players have already been selected and selecting
+    //if an empty spot is found
     if (battle.player1 === null) {
       dispatch(addPlayer1(vegetable));
       dispatch(setNotification({ message: `You selected ${vegetable.name} for battle`, type: "info" }));
@@ -29,6 +31,7 @@ const Vegetable = () => {
   };
 
   const onRemove = async () => {
+    //Making sure you can only remove a player if it exists
     if (battle.player1 != null) {
       if (vegetable.id === battle.player1.id) {
         dispatch(removePlayer1());

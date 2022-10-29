@@ -79,16 +79,6 @@ describe("info of one vegetable", () => {
 
     expect(response.body.name).toContain("Porkkana");
   });
-
-  test("info is returned with valid id", async () => {
-    const veggieAtStart = (await helper.vegetablesInDb())[0];
-    const response = await api
-      .get(`/api/vegetables/${veggieAtStart.id}`)
-      .expect(200)
-      .expect("Content-Type", /application\/json/);
-
-    expect(response.body.name).toContain("Porkkana");
-  });
 });
 
 afterAll(() => {

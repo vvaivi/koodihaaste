@@ -48,7 +48,7 @@ const VegetableList = ({ vegetables, setFilter }) => {
     }
   }
   if (vegetables.length > 20) {
-    return <div>Too many foods, specify some other fliter</div>;
+    return <div>Too many foods, specify some other filter</div>;
   }
 
   if (vegetables.length === 0) {

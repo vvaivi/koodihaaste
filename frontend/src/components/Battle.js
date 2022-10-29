@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Button } from ".";
 import { reactToVegetable } from "../reducers/vegetables";
 import { setNotification } from "../reducers/notification";
+import { removePlayer1, removePlayer2 } from "../reducers/battle";
 
 const GamePlay = ({ visible, battle }) => {
   const dispatch = useDispatch();
@@ -57,9 +58,15 @@ const GamePlay = ({ visible, battle }) => {
 };
 
 const Battle = () => {
+  const dispatch = useDispatch();
   const battle = useSelector((state) => state.battle);
 
   const [visible, setVisible] = useState(false);
+
+  const clearPlayers = () => {
+    dispatch(removePlayer1());
+    dispatch(removePlayer2());
+  };
 
   if (battle.player1 === null || battle.player2 === null) {
     return (
@@ -96,6 +103,7 @@ const Battle = () => {
       </p>
       <GamePlay visible={visible} battle={battle} />
       <Button onClick={() => setVisible(!visible)}>{visible ? "Close battle" : "Start battle"}</Button>
+      <Button onClick={clearPlayers}>Clear battle</Button>
     </div>
   );
 };

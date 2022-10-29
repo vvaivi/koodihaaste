@@ -13,8 +13,6 @@ import { Navigation, Page, Footer, GlobalStyle } from "./components";
 import { initializeVeggies } from "./reducers/vegetables";
 import { initializeData } from "./reducers/data";
 
-//Filter sama sana ei toimi
-
 const App = () => {
   const dispatch = useDispatch();
 
