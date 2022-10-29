@@ -52,7 +52,7 @@ const VegetableList = ({ vegetables, setFilter }) => {
   }
 
   if (vegetables.length === 0) {
-    return <div>No matches, specify some other fliter</div>;
+    return <div>No matches, specify some other filter</div>;
   }
 
   if (vegetables.length > 1) {
