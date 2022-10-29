@@ -37,6 +37,16 @@ const VegetableDisplay = ({ vegetable, setFilter }) => {
 };
 
 const VegetableList = ({ vegetables, setFilter }) => {
+  const [selected, setSelected] = useState(false);
+
+  //Making it possible to for example show "Peruna" when there is also
+  //"Perunapiirakka" available
+  if (selected) {
+    setSelected(false);
+    while (vegetables.length > 1) {
+      vegetables.pop();
+    }
+  }
   if (vegetables.length > 20) {
     return <div>Too many foods, specify some other fliter</div>;
   }
@@ -51,13 +61,20 @@ const VegetableList = ({ vegetables, setFilter }) => {
         {vegetables.map(({ nimi }) => (
           <div key={nimi}>
             {nimi}
-            <Button onClick={() => setFilter(nimi)}>show</Button>
+            <Button
+              onClick={() => {
+                setFilter(nimi);
+                setSelected(true);
+              }}
+            >
+              show
+            </Button>
           </div>
         ))}
       </div>
     );
   }
-  console.log(vegetables[0])
+
   return (
     <div>
       <VegetableDisplay vegetable={vegetables[0]} setFilter={setFilter} />

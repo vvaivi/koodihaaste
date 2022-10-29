@@ -52,10 +52,10 @@ const Vegetable = () => {
       <p></p>
       <h2>{vegetable.name}</h2>
       <div>
-        <ul>energy {vegetable.energy.toFixed(2)} kcal </ul>
-        <ul>carbohydrates {vegetable.carbs.toFixed(2)} g</ul>
-        <ul>fat {vegetable.fat.toFixed(2)} g</ul>
-        <ul>protein {vegetable.protein.toFixed(2)} g</ul>
+        <p>energy {vegetable.energy.toFixed(2)} kcal </p>
+        <p>carbohydrates {vegetable.carbs.toFixed(2)} g</p>
+        <p>fat {vegetable.fat.toFixed(2)} g</p>
+        <p>protein {vegetable.protein.toFixed(2)} g</p>
         <Button onClick={onSelected}> Select for battle </Button>
         <Button onClick={onRemove}> Remove from battle </Button>
       </div>

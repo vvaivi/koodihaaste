@@ -9,7 +9,7 @@ import Notification from "./components/Notification";
 import Battle from "./components/Battle";
 import Filter from "./components/Filter";
 
-import { Navigation, Page, Footer, GlobalStyle} from "./components";
+import { Navigation, Page, Footer, GlobalStyle } from "./components";
 import { initializeVeggies } from "./reducers/vegetables";
 import { initializeData } from "./reducers/data";
 
@@ -25,38 +25,40 @@ const App = () => {
 
   const padding = {
     padding: 5,
-    color: "black"
+    color: "black",
   };
 
   return (
     <div className="container">
-    <Page>
-      <GlobalStyle />
-      <Navigation>
-        <Link style={padding}  to="/">
-          Scoreboard
-        </Link>
-        <Link style={padding} to="/filter">
-          Select foods for battle
-        </Link>
-        <Link style={padding} to="/battle">
-          Battle
-        </Link>
-      </Navigation>
+      <Page>
+        <GlobalStyle />
+        <Navigation>
+          <Link style={padding} to="/">
+            Scoreboard
+          </Link>
+          <Link style={padding} to="/filter">
+            Select foods for battle
+          </Link>
+          <Link style={padding} to="/battle">
+            Battle
+          </Link>
+        </Navigation>
 
-      <Notification />
+        <Notification />
 
-      <Routes>
-        <Route path="/" element={<Vegetables />} />
+        <Routes>
+          <Route path="/" element={<Vegetables />} />
 
-        <Route path="/vegetables/:id" element={<Vegetable />} />
+          <Route path="/vegetables/:id" element={<Vegetable />} />
 
-        <Route path="/filter" element={<Filter />} />
+          <Route path="/filter" element={<Filter />} />
 
-        <Route path="/battle" element={<Battle />} />
-      </Routes>
-      <Footer><b>Don't play with your food!</b></Footer>
-    </Page>
+          <Route path="/battle" element={<Battle />} />
+        </Routes>
+        <Footer>
+          <b>Don't play with your food!</b>
+        </Footer>
+      </Page>
     </div>
   );
 };

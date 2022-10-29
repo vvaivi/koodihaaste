@@ -22,6 +22,6 @@ const slice = createSlice({
   },
 });
 
-export const { addNew, addPlayer1, addPlayer2, removePlayer1, removePlayer2} = slice.actions;
+export const { addNew, addPlayer1, addPlayer2, removePlayer1, removePlayer2 } = slice.actions;
 
 export default slice.reducer;

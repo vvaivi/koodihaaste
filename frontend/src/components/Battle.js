@@ -7,12 +7,12 @@ import { setNotification } from "../reducers/notification";
 const GamePlay = ({ visible, battle }) => {
   const dispatch = useDispatch();
   if (!visible) return null;
-  
+
   if (battle.player1.id === battle.player2.id) {
-    dispatch(setNotification({ message: `Tasapeli!`, type: "info" }))
+    dispatch(setNotification({ message: `Tasapeli!`, type: "info" }));
     return null;
   }
-  
+
   let linesToDisplay = [];
 
   let health1 = battle.player1.energy;
@@ -82,18 +82,18 @@ const Battle = () => {
         {battle.player1.name} vs {battle.player2.name}
       </h3>
       <p></p>
-      <ul>
+      <p>
         Health: {battle.player1.energy.toFixed(2)} vs {battle.player2.energy.toFixed(2)}
-      </ul>
-      <ul>
+      </p>
+      <p>
         Attack: {battle.player1.carbs.toFixed(2)} vs {battle.player2.carbs.toFixed(2)}
-      </ul>
-      <ul>
+      </p>
+      <p>
         Defence: {battle.player1.protein.toFixed(2)} vs {battle.player2.protein.toFixed(2)}
-      </ul>
-      <ul>
+      </p>
+      <p>
         Delay: {delay1.toFixed(2)} vs {delay2.toFixed(2)}
-      </ul>
+      </p>
       <GamePlay visible={visible} battle={battle} />
       <Button onClick={() => setVisible(!visible)}>{visible ? "Close battle" : "Start battle"}</Button>
     </div>
