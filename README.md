@@ -6,7 +6,7 @@ Ohjelmassa käytettyjä teknologioita ovat Node.js, Express, React sekä Redux j
 
 ## Pelin pelaaminen
 
-Sivun yläosan palkista voi navigoida pelin eri osioihin. Scoreboard-osio näyttää nimensä mukaisesti tallennetut ruoat paremmuusjärjestyksessä. Ruoan nimeä klikkaamalla pääsee tarkastelemaan ruoan statseja ja valitsemaan ruoan taisteluun. Mikäli yhtään ruokaa ei ole tallennettu, sivu on tyhjä. Ruokia voi etsiä ja tallentaa Select foods for batte -osiossa. Kun kaksi ruokaa on valittu taisteluun, taistelun voi aloittaa Battle-osiossa.
+Sivun yläosan palkista voi navigoida pelin eri osioihin. Scoreboard-osio näyttää nimensä mukaisesti tallennetut ruoat paremmuusjärjestyksessä. Ruoan nimeä klikkaamalla pääsee tarkastelemaan ruoan ravintosisältöä ja valitsemaan ruoan taisteluun. Mikäli yhtään ruokaa ei ole tallennettu, sivu on tyhjä. Ruokia voi etsiä ja tallentaa Select foods for batte -osiossa. Kun kaksi ruokaa on valittu taisteluun, taistelun voi aloittaa Battle-osiossa.
 
 ## Ohjelman käynnistäminen
 
